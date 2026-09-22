@@ -1,3 +1,5 @@
+import { AudioWaveform } from "./AudioWaveform";
+
 function similarityPercent(similarity: number | null | undefined): string | null {
   return similarity == null ? null : `${(similarity * 100).toFixed(1)}%`;
 }
@@ -21,11 +23,7 @@ export function AudioResultCard({
   const lowSimilarity = warningCodes.includes("SPEAKER_SIMILARITY_BELOW_RECOMMENDED");
   return (
     <div className="audio-result-card">
-      <div className="waveform" aria-hidden="true">
-        {Array.from({ length: 28 }, (_, index) => (
-          <span key={index} />
-        ))}
-      </div>
+      <AudioWaveform className="waveform" />
       <audio controls preload="none" src={src} />
       {percent && (
         <p className="note">

@@ -12,6 +12,7 @@ import { QualityWarning } from "./QualityWarning";
 import { StatusBadge } from "./StatusBadge";
 import type { WorkspacePage } from "./AppShell";
 import { WizardAddReferenceModal } from "./WizardAddReferenceModal";
+import { AudioWaveform } from "./AudioWaveform";
 
 export type CreateVoiceStep = "upload" | "inspect" | "prepare" | "review" | "saved";
 
@@ -284,11 +285,7 @@ export function CreateVoiceWizard({
           </div>
           <span className="preview-status-dot" aria-hidden="true" />
         </div>
-        <div className="preview-waveform" aria-hidden="true">
-          {Array.from({ length: 34 }, (_, index) => (
-            <span key={index} style={{ height: `${25 + ((index * 19) % 58)}%` }} />
-          ))}
-        </div>
+        <AudioWaveform className="preview-waveform" />
         <div className="preview-audio-meta">
           <span>{file ? file.name : "等待选择参考音频"}</span>
           <span>{file ? "已就绪" : "00:00 / --:--"}</span>

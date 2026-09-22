@@ -999,21 +999,9 @@ body {
 }
 
 .placeholder-waveform {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  width: min(280px, 100%);
-  height: 46px;
+  width: min(320px, 100%);
+  height: 84px;
   margin-top: 15px;
-  opacity: 0.72;
-}
-
-.placeholder-waveform span {
-  flex: 1;
-  min-width: 3px;
-  max-height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #8bc3ed, #d5b8e9);
 }
 
 .studio-layout h2,
@@ -1143,21 +1131,8 @@ body {
 .preview-status-dot { width: 11px; height: 11px; margin-top: 7px; border-radius: 50%; background: #32b878; box-shadow: 0 0 0 7px rgba(50,184,120,0.12); }
 
 .preview-waveform {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  min-height: 126px;
+  height: 126px;
   margin: 24px 0 0;
-  padding: 20px 14px;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #f7fffb, #eefaf5);
-}
-
-.preview-waveform span {
-  flex: 1;
-  min-width: 2px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #6dc9a8, #27a979);
 }
 
 .preview-audio-meta {
@@ -1209,7 +1184,27 @@ body {
 .voice-filter-pills .secondary { min-height: 28px; padding: 4px 10px; font-size: 12px; }
 
 .voice-search-field { width: min(300px, 36%); }
-.voice-search-field input { width: 100%; min-height: 34px; padding: 7px 12px 7px 30px; border-radius: 8px; background: var(--canvas-soft); background-image: radial-gradient(circle at 13px 14px, transparent 4px, #8d8983 4px 5px, transparent 5px), linear-gradient(45deg, transparent 48%, #8d8983 49% 53%, transparent 54%); background-size: auto, 8px 8px; background-position: 0 0, 18px 18px; background-repeat: no-repeat; font-size: 12px; }
+.voice-search-field input {
+  appearance: none;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 12px 7px 30px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-md);
+  background: var(--canvas-soft);
+  background-image: radial-gradient(circle at 13px 14px, transparent 4px, var(--muted) 4px 5px, transparent 5px), linear-gradient(45deg, transparent 48%, var(--muted) 49% 53%, transparent 54%);
+  background-size: auto, 8px 8px;
+  background-position: 0 0, 18px 18px;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  font-size: 12px;
+}
+.voice-search-field input::placeholder { color: var(--muted); opacity: 1; }
+.voice-search-field input:focus {
+  border: 1px solid var(--muted);
+  outline: 2px solid var(--hairline-strong);
+  outline-offset: 2px;
+}
 
 .voice-library-columns {
   display: grid;

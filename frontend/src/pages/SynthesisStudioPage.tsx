@@ -15,6 +15,7 @@ import { synthesisDraftStore, useDraft } from "../state/drafts";
 import type { SynthesisRequest } from "../state/drafts";
 import type { WorkspacePage } from "../components/AppShell";
 import { AudioResultCard } from "../components/AudioResultCard";
+import { AudioWaveform } from "../components/AudioWaveform";
 import type { SafeError } from "../components/ErrorPanel";
 import { ErrorPanel } from "../components/ErrorPanel";
 import { EmptyState } from "../components/EmptyState";
@@ -481,11 +482,7 @@ export function SynthesisStudioPage({
               </div>
               <h3>准备好开始创作</h3>
               <p>完成左侧设置后，合成结果会在这里出现。</p>
-              <div className="placeholder-waveform" aria-hidden="true">
-                {Array.from({ length: 24 }, (_, index) => (
-                  <span key={index} style={{ height: `${22 + ((index * 17) % 52)}%` }} />
-                ))}
-              </div>
+              <AudioWaveform className="placeholder-waveform" />
             </div>
           )}
         </section>

@@ -401,30 +401,7 @@
 }
 
 .waveform {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  height: 40px;
   margin-bottom: var(--space-sm);
-}
-
-.waveform span {
-  flex: 1;
-  background: var(--hairline-strong);
-  border-radius: var(--radius-pill);
-  min-height: 20%;
-}
-
-.waveform span:nth-child(3n) {
-  min-height: 70%;
-}
-
-.waveform span:nth-child(3n + 1) {
-  min-height: 45%;
-}
-
-.waveform span:nth-child(4n) {
-  min-height: 100%;
 }
 
 /* 任务时间线 */
