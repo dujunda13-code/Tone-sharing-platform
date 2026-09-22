@@ -953,15 +953,15 @@
   grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
   min-height: 312px;
   overflow: hidden;
+  padding: 0;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-atmosphere);
-  background: var(--card);
   box-shadow: var(--shadow-soft);
 }
 
 .plaza-hero-copy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1001,57 +1001,6 @@
   margin-top: var(--space-lg);
 }
 
-.plaza-hero-orbs {
-  position: relative;
-  min-height: 312px;
-  overflow: hidden;
-}
-
-.plaza-hero-orb {
-  position: absolute;
-  display: block;
-  border-radius: 46% 54% 48% 52% / 53% 43% 57% 47%;
-  filter: blur(1px);
-  opacity: 0.5;
-}
-
-.plaza-hero-orb-mint {
-  top: 30%;
-  left: 5%;
-  width: 148px;
-  height: 210px;
-  background: var(--gradient-mint);
-  transform: rotate(20deg);
-}
-
-.plaza-hero-orb-peach {
-  right: -10%;
-  bottom: -16%;
-  width: 220px;
-  height: 270px;
-  background: var(--gradient-peach);
-  transform: rotate(-18deg);
-}
-
-.plaza-hero-orb-lavender {
-  top: 7%;
-  left: 44%;
-  width: 128px;
-  height: 184px;
-  background: var(--gradient-lavender);
-  transform: rotate(-15deg);
-}
-
-.plaza-hero-wave {
-  position: absolute;
-  right: var(--space-xl);
-  bottom: var(--space-xl);
-  width: 64px;
-  color: var(--body);
-  transform: rotate(-10deg);
-}
-
-.plaza-hero-wave svg,
 .plaza-empty-wave svg,
 .plaza-voice-mark svg {
   display: block;

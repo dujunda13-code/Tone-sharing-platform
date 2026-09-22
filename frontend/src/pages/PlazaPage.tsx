@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { api, getApiError } from "../api/client";
 import type { PlazaComment, PlazaPost, VoiceSummary } from "../api/types";
 import type { WorkspacePage } from "../components/AppShell";
+import { AtmosphericWave } from "../components/AtmosphericWave";
 import { Dropdown } from "../components/Dropdown";
 
 type PlazaFilter = "all" | "mine" | "favorited";
@@ -239,7 +240,8 @@ export function PlazaPage({
 
   return (
     <section className="preview-page page-stack">
-      <header className="plaza-hero">
+      <header className="plaza-hero atmospheric-panel tone-mint">
+        <AtmosphericWave className="plaza-hero-waves" />
         <div className="plaza-hero-copy">
           <p className="plaza-hero-eyebrow">音色广场</p>
           <h1>让声音，被更多人听见</h1>
@@ -248,12 +250,6 @@ export function PlazaPage({
             <button type="button" className="primary" onClick={() => void openPublish()}>发布我的音色</button>
             <button type="button" className="secondary" onClick={() => onNavigate("create")}>去创建音色</button>
           </div>
-        </div>
-        <div className="plaza-hero-orbs" aria-hidden="true">
-          <span className="plaza-hero-orb plaza-hero-orb-mint" />
-          <span className="plaza-hero-orb plaza-hero-orb-peach" />
-          <span className="plaza-hero-orb plaza-hero-orb-lavender" />
-          <span className="plaza-hero-wave"><WaveMark /></span>
         </div>
       </header>
       {notice && <div className="card" role="status">{notice}</div>}

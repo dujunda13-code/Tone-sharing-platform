@@ -171,44 +171,6 @@
     font-size: clamp(40px, 13vw, 56px);
   }
 
-  .plaza-hero-orbs {
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    min-height: 0;
-    pointer-events: none;
-  }
-
-  .plaza-hero-copy {
-    z-index: 1;
-  }
-
-  .plaza-hero-orb-mint {
-    top: auto;
-    bottom: -34px;
-    left: 46%;
-    width: 96px;
-    height: 144px;
-  }
-
-  .plaza-hero-orb-lavender {
-    top: 12px;
-    left: auto;
-    right: 8%;
-    width: 86px;
-    height: 122px;
-  }
-
-  .plaza-hero-orb-peach {
-    display: none;
-  }
-
-  .plaza-hero-wave {
-    right: var(--space-base);
-    bottom: var(--space-base);
-    width: 46px;
-  }
-
   .plaza-toolbar-card,
   .plaza-empty-state {
     padding: var(--space-base);

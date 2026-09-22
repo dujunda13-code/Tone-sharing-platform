@@ -503,6 +503,10 @@ body {
 .dashboard-hero .atmospheric-panel {
   min-height: 228px;
   padding: 34px 38px;
+}
+
+.dashboard-hero .atmospheric-panel,
+.plaza-hero.atmospheric-panel {
   border: 1px solid rgba(231, 229, 228, 0.78);
   background:
     radial-gradient(ellipse at 82% 38%, rgba(200, 184, 224, 0.22), transparent 18%),
@@ -511,7 +515,10 @@ body {
     #fff;
 }
 
-.dashboard-hero .atmospheric-panel::before {
+.plaza-hero.atmospheric-panel { padding: 0; }
+
+.dashboard-hero .atmospheric-panel::before,
+.plaza-hero.atmospheric-panel::before {
   inset: 0;
   opacity: 0.12;
   background:
@@ -520,13 +527,15 @@ body {
     radial-gradient(ellipse at 78% 82%, var(--gradient-mint), transparent 18%);
 }
 
-.dashboard-hero .atmospheric-panel::after {
+.dashboard-hero .atmospheric-panel::after,
+.plaza-hero.atmospheric-panel::after {
   inset: 0;
   opacity: 0.16;
   background: radial-gradient(ellipse at 25% 88%, var(--gradient-peach), transparent 22%);
 }
 
-.dashboard-hero-waves {
+.dashboard-hero-waves,
+.plaza-hero-waves {
   position: absolute !important;
   z-index: 1 !important;
   top: 3%;
@@ -534,6 +543,11 @@ body {
   width: 54%;
   height: 88%;
   pointer-events: none;
+}
+
+.plaza-hero-waves {
+  top: 6%;
+  height: 88%;
 }
 
 .dashboard-hero .atmospheric-panel > :not(.dashboard-hero-waves) {
