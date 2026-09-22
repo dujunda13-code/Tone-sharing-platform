@@ -1,0 +1,349 @@
+/* 响应式：≤1024 收窄网格，≤768 顶部导航折叠，≤640 单列与触摸优先。 */
+@media (max-width: 1024px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-grid,
+  .studio-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .auth-layout {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-xl) var(--space-base);
+  }
+
+  .auth-layout .atmospheric-panel {
+    min-height: 220px;
+  }
+
+  .plaza-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.7fr);
+  }
+
+  .plaza-hero-copy {
+    padding: var(--space-xl);
+  }
+
+  .plaza-directory-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .plaza-directory-preview {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 920px) {
+  .profile-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .profile-identity-panel {
+    min-height: 0;
+  }
+
+  .profile-stats {
+    margin-top: var(--space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav-links {
+    display: none;
+  }
+
+  /* 窄屏头部允许自然增高换行，避免侧区溢出遮挡下方移动菜单。 */
+  .top-nav {
+    height: auto;
+    min-height: 64px;
+  }
+
+  .top-nav-inner {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 64px;
+    padding: var(--space-xs) var(--space-base);
+    row-gap: var(--space-xxs);
+  }
+
+  .top-nav-side {
+    flex-wrap: wrap;
+  }
+
+  .user-chip {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    background: var(--card);
+    border-bottom: 1px solid var(--hairline);
+    padding: var(--space-sm) var(--space-base) var(--space-base);
+  }
+
+  .mobile-nav a {
+    padding: var(--space-sm) var(--space-xs);
+    color: var(--body-strong);
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .mobile-nav a.active {
+    background: var(--surface-strong);
+    color: var(--ink);
+  }
+
+  h1 {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+  }
+
+  .display-hero {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+  }
+
+  .workspace-content {
+    padding: var(--space-base) var(--space-base) var(--space-xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  /* 任务行在窄屏纵向堆叠，避免徽章与说明被挤压换行。 */
+  .job-list li {
+    flex-wrap: wrap;
+  }
+
+  .job-list .status-badge,
+  .job-list .job-kind {
+    white-space: nowrap;
+  }
+
+  .job-list .job-message {
+    flex-basis: 100%;
+  }
+
+  .card,
+  .resource-card,
+  .stat-card,
+  .audio-result-card,
+  .auth-form-panel,
+  .atmospheric-panel {
+    padding: var(--space-base);
+    border-radius: var(--radius-lg);
+  }
+
+  .plaza-hero {
+    display: block;
+    min-height: 0;
+  }
+
+  .plaza-hero-copy {
+    min-height: 310px;
+    padding: var(--space-lg);
+  }
+
+  .plaza-hero h1 {
+    font-size: clamp(40px, 13vw, 56px);
+  }
+
+  .plaza-hero-orbs {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    min-height: 0;
+    pointer-events: none;
+  }
+
+  .plaza-hero-copy {
+    z-index: 1;
+  }
+
+  .plaza-hero-orb-mint {
+    top: auto;
+    bottom: -34px;
+    left: 46%;
+    width: 96px;
+    height: 144px;
+  }
+
+  .plaza-hero-orb-lavender {
+    top: 12px;
+    left: auto;
+    right: 8%;
+    width: 86px;
+    height: 122px;
+  }
+
+  .plaza-hero-orb-peach {
+    display: none;
+  }
+
+  .plaza-hero-wave {
+    right: var(--space-base);
+    bottom: var(--space-base);
+    width: 46px;
+  }
+
+  .plaza-toolbar-card,
+  .plaza-empty-state {
+    padding: var(--space-base);
+  }
+
+  .plaza-toolbar,
+  .plaza-filter-tabs,
+  .plaza-empty-actions,
+  .plaza-empty-benefits {
+    width: 100%;
+  }
+
+  .plaza-toolbar > .primary,
+  .plaza-toolbar .plaza-search,
+  .plaza-toolbar .plaza-sort {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .plaza-filter-tabs button {
+    flex: 1 1 auto;
+  }
+
+  .plaza-directory-row {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-base);
+  }
+
+  .plaza-directory-preview {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .plaza-directory-interactions,
+  .plaza-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .plaza-directory-interactions { justify-items: start; }
+
+  .plaza-directory-tools { justify-content: flex-start; }
+
+  .plaza-modal-backdrop {
+    align-items: end;
+    padding: var(--space-xs);
+  }
+
+  .plaza-modal-content {
+    max-height: calc(100vh - var(--space-base));
+    padding: var(--space-base);
+  }
+
+  .profile-hero {
+    padding: var(--space-base);
+  }
+
+  .profile-identity-panel {
+    padding: var(--space-lg);
+  }
+
+  .profile-identity-copy strong,
+  .profile-edit-heading h2 {
+    font-size: 32px;
+  }
+
+  .profile-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .profile-edit-footer,
+  .profile-section-heading,
+  .profile-history-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profile-edit-footer .primary,
+  .profile-history-row .secondary {
+    width: 100%;
+  }
+
+  .profile-tabs,
+  .profile-activity-list,
+  .profile-section-heading {
+    padding-right: var(--space-base);
+    padding-left: var(--space-base);
+  }
+
+  .profile-tabs button {
+    flex: 1 1 auto;
+  }
+
+  .profile-history-row {
+    padding: var(--space-base) 0;
+  }
+
+  /* 管理表格退化为堆叠记录（DOM 不变，保持可访问性） */
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    padding: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  td {
+    border: none;
+    padding: var(--space-xxs) 0;
+  }
+
+  td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+}

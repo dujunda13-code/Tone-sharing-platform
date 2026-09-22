@@ -1,0 +1,3 @@
+# Keep one normalized policy term per line. Do not put user text here.
+禁止词
+bad-word

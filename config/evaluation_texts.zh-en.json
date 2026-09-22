@@ -1,0 +1,22 @@
+[
+  {"id": "zh_01", "lang": "zh", "text": "今天的天气很适合在公园散步。"},
+  {"id": "zh_02", "lang": "zh", "text": "请问最近的地铁站应该怎么走？"},
+  {"id": "zh_03", "lang": "zh", "text": "会议将在下午三点二十分准时开始。"},
+  {"id": "zh_04", "lang": "zh", "text": "这个方案需要在发布前完成最后一次校验。"},
+  {"id": "zh_05", "lang": "zh", "text": "如果明天下雨，我们就把活动改到室内。"},
+  {"id": "zh_06", "lang": "zh", "text": "杭州西湖、北京故宫和上海外滩都很值得参观。"},
+  {"id": "zh_07", "lang": "zh", "text": "订单编号是二零二六零九零五一七。"},
+  {"id": "zh_08", "lang": "zh", "text": "你更喜欢平静、活泼，还是略带严肃的表达方式？"},
+  {"id": "zh_09", "lang": "zh", "text": "请把这段较长的说明完整读完，并保持自然的停顿和语速。"},
+  {"id": "zh_10", "lang": "zh", "text": "完成设置后，系统会在本机保存模型参数和评测报告。"},
+  {"id": "en_01", "lang": "en", "text": "The weather is perfect for a walk in the park today."},
+  {"id": "en_02", "lang": "en", "text": "Could you tell me how to get to the nearest subway station?"},
+  {"id": "en_03", "lang": "en", "text": "The meeting will start promptly at three twenty in the afternoon."},
+  {"id": "en_04", "lang": "en", "text": "This plan needs one final verification before release."},
+  {"id": "en_05", "lang": "en", "text": "If it rains tomorrow, we will move the event indoors."},
+  {"id": "en_06", "lang": "en", "text": "Hangzhou West Lake, the Forbidden City, and the Bund are popular landmarks."},
+  {"id": "en_07", "lang": "en", "text": "The order number is two zero two six zero nine zero five one seven."},
+  {"id": "en_08", "lang": "en", "text": "Would you prefer a calm, cheerful, or slightly serious delivery?"},
+  {"id": "en_09", "lang": "en", "text": "Please read this longer explanation completely, with natural pauses and pacing."},
+  {"id": "en_10", "lang": "en", "text": "After setup, the system will keep model parameters and evaluation reports locally."}
+]

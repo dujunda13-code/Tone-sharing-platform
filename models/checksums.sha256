@@ -1,0 +1,30 @@
+# One SHA-256 and one relative model path per line.
+# Downloaded weights are intentionally not bundled in this repository.
+257a7f36ae49e9ff08790d2cd3d398592530852caba810197f8606e884a52c54  models/gpt-sovits/v2Pro/s2Dv2Pro.pth
+0f8ead815234365edf045c6d86370ed6e4f440e8195be77ff0ea72684ad406a5  models/gpt-sovits/v2Pro/s2Gv2Pro.pth
+d42a22bbbf65fb2bbdd45ad6a66841156977db45c7aabe0a6992ff378d9c7d3b  models/gpt-sovits/v2Pro/s2Gv2ProPlus.pth
+740bb6584a99ee4cf910101536acba38c15a8017ea6a3a2813ec668fb62981f1  models/gpt-sovits/sv/pretrained_eres2netv2w24s4ep4.ckpt
+7a845b5fbe9364a63a3909d8ab3fe064d13a76ae4c2e983573e08c69b7b51748  models/audioseal/generator_base.pth
+8a78e8a83584113523e161fc599fcab10fd0e94c04d2eb9d2fa1e9ec91ab69d9  models/audioseal/detector_base.pth
+87133414860ea14ff6620c483a3db5ed07b44be42e2c3fcdad65523a729a745a  models/gpt-sovits/v2Pro/s1v3.ckpt
+3d57de2fd7e80d0e5c8ff194f0bbb6baa10df7e43fc262a0cc71298a78b0a3e5  models/gpt-sovits/bert/config.json
+e53a693acc59ace251d143d068096ae0d7b79e4b1b503fa84c9dcf576448c1d8  models/gpt-sovits/bert/pytorch_model.bin
+173796956820ea27bd14f76bf28162607ff4254807e2948253eb5b46f5bb643b  models/gpt-sovits/bert/tokenizer.json
+c3e5060a1277e0f078cc6be9da4528a605dba6ece93018981fe2c820e5c7b103  models/gpt-sovits/chinese-hubert-base/config.json
+dcd684124d06722947939d41ea6ae58dbf10968c60a11a29f23ddc602c64a29b  models/gpt-sovits/chinese-hubert-base/preprocessor_config.json
+24164f129c66499d1346e2aa55f183250c223161ec2770c0da3d3b08cf432d3c  models/gpt-sovits/chinese-hubert-base/pytorch_model.bin
+# FunASR ASR runtime artifacts (iic/speech_seaco_paraformer_large_asr_nat-zh-cn-16k-common-vocab8404-pytorch, v2.0.4).
+29b3c740a2c0cfc6b308126d31d7f265fa2be74f3bb095cd2f143ea970896ae5  models/funasr/paraformer-zh/am.mvn
+6602efa95e4c7248e1d1030f7ff454a3c9af0f57c335ed87f35260cd7faec35d  models/funasr/paraformer-zh/config.yaml
+3d491689244ec5dfbf9170ef3827c358aa10f1f20e42a7c59e15e688647946d1  models/funasr/paraformer-zh/model.pt
+59a2ef803a3f1648ad03a2e1480db1c1ee0c0d7dc4ef4dbd16cea33944329022  models/funasr/paraformer-zh/seg_dict
+2b20c2b12572d682afff84ce1c8d560f67b8b32a4c1f21567411d141ed352127  models/funasr/paraformer-zh/tokens.json
+# CAM++ runtime artifacts (iic/speech_campplus_sv_zh-cn_16k-common, v1.0.0).
+3388cf5fd3493c9ac9c69851d8e7a8badcfb4f3dc631020c4961371646d5ada8  models/campplus/campplus_cn_common.bin
+17342041bd5b22f6fd7e32f6e7a267b0bf65f018c0a721bada6547e3d28fbfc9  models/campplus/config.yaml
+# Emotion2Vec+ Large runtime artifacts (iic/emotion2vec_plus_large, master).
+f4fa0eb82cc78bfebb43c56d68791afb01788085a18897d20999af7bc45d51d3  models/emotion2vec/config.yaml
+be501a01f26fcdc7663a062dff86af839afbaef7c4de32f5e42d7e1ad2784da4  models/emotion2vec/model.pt
+866121e470057b847d7a50e9923509141fb2924392f53385a186482a1ec0fb7f  models/emotion2vec/tokens.txt
+# fastText language-identification model for the vendored LangSegmenter (fast_langdetect inference cache).
+7e69ec5451bc261cc7844e49e4792a85d7f09c06789ec800fc4a44aec362764e  models/gpt-sovits/fast_langdetect/lid.176.bin

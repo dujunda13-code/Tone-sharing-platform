@@ -1,0 +1,47 @@
+# Runtime data and locally downloaded model weights must never enter Git.
+data/**
+!data/**/
+!data/**/.gitkeep
+models/**
+!models/.gitkeep
+!models/checksums.sha256
+
+# Python and local tooling
+__pycache__/
+.worktrees/
+*.py[cod]
+.pytest_cache/
+.pytest-tmp*/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.venv/
+
+# Frontend artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/test-results/
+frontend/playwright-report/
+
+# Root-level generated artifacts and local editor/dependency state
+/node_modules/
+/output/
+/tmp/
+/.vscode/
+/photo/
+/reports/webui_alignment_benchmark.json
+
+# Local secrets and logs
+.env
+.env.*
+*.log
+
+# Offline emotion adapter run artifacts (server-side only; data/caches/weights never enter Git)
+offline/**/runs/
+offline/**/*.pt
+offline/**/*.ckpt
+offline/**/*.pth
+offline/**/*.wav

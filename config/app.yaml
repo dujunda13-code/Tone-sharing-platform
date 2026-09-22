@@ -1,0 +1,40 @@
+runtime:
+  device: cuda:0
+  gpu_workers: 1
+  minimum_vram_gib: 8
+  cuda_allocator_conf: expandable_segments:True
+training:
+  batch_size: 1
+  fp16: true
+  gpu_oom_retries: 1
+  gpu_phases_serial: true
+  s2_grad_ckpt: true
+models:
+  gpt_sovits_tag: 20250606v2pro
+  emotion_model: iic/emotion2vec_plus_large
+  speaker_model: iic/speech_campplus_sv_zh-cn_16k-common
+  watermark_generator: audioseal_wm_16bits
+  watermark_detector: audioseal_detector_16bits
+  active_voice_base: gpt-sovits-v2proplus-official
+  voice_bases:
+    gpt-sovits-v2proplus-official:
+      family: GPT-SoVITS
+      source_tag: 20250606v2pro
+      gpt_weight: gpt-sovits/v2Pro/s1v3.ckpt
+      sovits_weight: gpt-sovits/v2Pro/s2Gv2ProPlus.pth
+audio:
+  reference_seconds_min: 3.0
+  reference_seconds_max: 10.0
+  offline_training_effective_seconds_min: 480
+  offline_training_effective_seconds_max: 720
+  segment_seconds_min: 3
+  segment_seconds_max: 12
+  snr_warning_db: 20
+  max_clipping_ratio: 0.01
+quality:
+  speaker_similarity_median: 0.90
+  speaker_similarity_p10: 0.85
+  watermark_probability: 0.80
+  emotion_confidence: 0.55
+storage:
+  root: data

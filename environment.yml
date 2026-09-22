@@ -1,0 +1,9 @@
+name: timbre-share
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - -r requirements-app.txt
+      - -r requirements-dev.txt
