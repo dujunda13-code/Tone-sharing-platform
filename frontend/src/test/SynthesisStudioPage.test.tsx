@@ -176,12 +176,22 @@ describe("SynthesisStudioPage 合成门禁", () => {
     expect(screen.queryByText(/任务 ID/)).not.toBeInTheDocument();
   });
 
-  it("shows an honest empty state when no ready voice exists", async () => {
+  it("keeps the creation workspace visible but blocks submission when no ready voice exists", async () => {
+    const user = userEvent.setup();
+    const navigate = vi.fn();
+    synthesisDraftStore.set({ selected: "ready-1" });
     installWorkspaceApiMock({ voices: READY_VOICES.slice(0, 1) });
-    render(<SynthesisStudioPage onNavigate={vi.fn()} />);
+    render(<SynthesisStudioPage onNavigate={navigate} />);
 
-    expect(await screen.findByText(/暂无可用音色/)).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "开始安全合成" })).not.toBeInTheDocument();
+    expect(await screen.findByText("当前没有可用于创作的音色")).toBeInTheDocument();
+    expect(screen.getByLabelText("合成文本")).toBeInTheDocument();
+    expect(screen.getByText("合成设置")).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "合成结果" })).toBeInTheDocument();
+    await user.type(screen.getByLabelText("合成文本"), "你好，世界");
+    await user.click(screen.getByLabelText("我确认已获得声音授权"));
+    expect(screen.getByRole("button", { name: "开始安全合成" })).toBeDisabled();
+    await user.click(screen.getByRole("button", { name: "去创建音色" }));
+    expect(navigate).toHaveBeenCalledWith("create");
   });
 
   it("keeps the synthesis draft when the user leaves and returns", async () => {

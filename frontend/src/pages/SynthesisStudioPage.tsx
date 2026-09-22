@@ -165,7 +165,8 @@ export function SynthesisStudioPage({
     cloudVectorValid
   );
   const canSubmit =
-    selected !== "" && text.trim() !== "" && consent && !submitting &&
+    voices !== null && !loadError && selectedVoice !== null &&
+    text.trim() !== "" && consent && !submitting &&
     !emotionReferenceUnavailable && cloudConfigurationComplete;
 
   const selectSynthesisMode = (mode: SynthesisMode) => {
@@ -216,40 +217,6 @@ export function SynthesisStudioPage({
     }
   };
 
-  if (voices === null && loadError === null) {
-    return (
-      <section className="card" aria-live="polite">
-        <h2>正在加载可用音色…</h2>
-      </section>
-    );
-  }
-
-  if (loadError) {
-    return (
-      <section className="card">
-        <h2>语音创作</h2>
-        <ErrorPanel error={loadError} hint="音色列表接口由后端提供；未实现前保持失败提示。" />
-      </section>
-    );
-  }
-
-  if (voices !== null && pickerVoices.length === 0) {
-    return (
-      <section className="card">
-        <h2>语音创作</h2>
-        <EmptyState
-          title="暂无可用音色"
-          description="只有参考与基础模型均就绪的零样本音色才能用于合成。"
-          action={
-            <button className="primary" type="button" onClick={() => onNavigate("create")}>
-              去创建音色
-            </button>
-          }
-        />
-      </section>
-    );
-  }
-
   return (
     <div className="page-stack preview-page synthesis-page">
       <section className="card page-intro">
@@ -260,7 +227,22 @@ export function SynthesisStudioPage({
       </section>
       <div className="studio-layout synthesis-console-grid">
         <section className="card synthesis-writing-panel">
-          <VoicePicker voices={pickerVoices} value={selected} onChange={(voiceId) => setDraft({ selected: voiceId })} />
+          {voices === null && !loadError && <p className="hint" role="status">正在加载可用音色…</p>}
+          {loadError && <ErrorPanel error={loadError} hint="音色加载失败，请检查服务后重试。" />}
+          {voices !== null && pickerVoices.length === 0 && (
+            <EmptyState
+              title="当前没有可用于创作的音色"
+              description="请先创建音色；音色审核完成且系统就绪后，即可在这里选择并合成。"
+              action={
+                <button className="primary" type="button" onClick={() => onNavigate("create")}>
+                  去创建音色
+                </button>
+              }
+            />
+          )}
+          {voices !== null && (
+            <VoicePicker voices={pickerVoices} value={selected} onChange={(voiceId) => setDraft({ selected: voiceId })} />
+          )}
           {selectedVoice && (
             <QualityWarning
               warningCodes={selectedVoice.quality_warning_codes}

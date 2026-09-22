@@ -1252,6 +1252,8 @@ body {
 .synthesis-writing-panel,
 .synthesis-settings-panel,
 .synthesis-result-panel { min-width: 0; }
+.synthesis-writing-panel .empty-state { margin-bottom: 18px; padding: 16px; text-align: left; }
+.synthesis-writing-panel .empty-title { font-family: var(--font-body); font-size: 16px; font-weight: 700; }
 .synthesis-writing-panel .voice-picker { margin-bottom: 18px; }
 .synthesis-text-field textarea { min-height: 220px; resize: vertical; }
 .settings-card-heading { padding-bottom: 14px; margin-bottom: 15px; border-bottom: 1px solid var(--hairline-soft); }

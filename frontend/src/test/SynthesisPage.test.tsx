@@ -37,7 +37,8 @@ describe("SynthesisPage（委托语音创作工作台）", () => {
     render(<SynthesisPage />);
 
     expect(await screen.findByText(/暂无可用音色/)).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "开始安全合成" })).not.toBeInTheDocument();
+    expect(screen.getByLabelText("合成文本")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "开始安全合成" })).toBeDisabled();
     expect(vi.mocked(fetch)).toHaveBeenCalled();
   });
 });
