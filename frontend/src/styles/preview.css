@@ -1284,7 +1284,6 @@ body {
 .emotion-vector-editor { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--hairline-soft); border-radius: 12px; }
 .vector-control { display: grid; grid-template-columns: 82px 1fr; align-items: center; gap: 8px; font-size: 12px; }
 .vector-control input { min-width: 0; }
-.cloud-consent-box { border-color: #f2d6c9; background: #fff9f6; }
 .synthesis-settings-panel .primary { width: 100%; }
 .synthesis-result-panel { min-height: 100%; }
 .synthesis-result-panel > h2 { font-family: var(--font-body); font-size: 18px; font-weight: 700; }
