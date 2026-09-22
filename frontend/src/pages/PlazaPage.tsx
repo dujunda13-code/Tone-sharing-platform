@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { api, getApiError } from "../api/client";
 import type { PlazaComment, PlazaPost, VoiceSummary } from "../api/types";
 import type { WorkspacePage } from "../components/AppShell";
-import { AtmosphericWave } from "../components/AtmosphericWave";
 import { Dropdown } from "../components/Dropdown";
+import { RibbonBackground } from "../components/RibbonBackground";
 
 type PlazaFilter = "all" | "mine" | "favorited";
 
@@ -241,7 +241,7 @@ export function PlazaPage({
   return (
     <section className="preview-page page-stack">
       <header className="plaza-hero atmospheric-panel tone-mint">
-        <AtmosphericWave className="plaza-hero-waves" />
+        <RibbonBackground className="plaza-hero-ribbon" />
         <div className="plaza-hero-copy">
           <p className="plaza-hero-eyebrow">音色广场</p>
           <h1>让声音，被更多人听见</h1>

@@ -17,7 +17,7 @@ describe("认证页预览图视觉契约", () => {
     expect(artPanel).toBeInTheDocument();
     expect(page.querySelector(".auth-brand-mark")).toBeInTheDocument();
     expect(page.querySelector(".auth-brand-mark .brand-glyph")).toBeInTheDocument();
-    expect(page.querySelector("svg.auth-preview-waves path")).toBeInTheDocument();
+    expect(page.querySelector("video.auth-preview-ribbon source[src='/dashboard-ribbon-motion.mp4']")).toBeInTheDocument();
     expect(page.querySelector(".password-toggle svg")).toBeInTheDocument();
 
     const form = screen.getByRole("region", { name: "登录" });

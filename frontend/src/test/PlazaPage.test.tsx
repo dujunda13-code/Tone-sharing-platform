@@ -64,7 +64,7 @@ test("renders an editorial hero while keeping the accessible plaza controls", as
   const { container } = render(<PlazaPage onNavigate={vi.fn()} onSynthesize={vi.fn()} />);
 
   expect(await screen.findByText("让声音，被更多人听见")).toBeInTheDocument();
-  expect(container.querySelector(".plaza-hero.atmospheric-panel .plaza-hero-waves")).toBeInTheDocument();
+  expect(container.querySelector(".plaza-hero.atmospheric-panel video.plaza-hero-ribbon")).toBeInTheDocument();
   expect(screen.getByRole("tablist", { name: "广场过滤" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "发布音色" })).toBeInTheDocument();
 });

@@ -6,7 +6,7 @@ import type { SafeError } from "../components/ErrorPanel";
 import { ErrorPanel } from "../components/ErrorPanel";
 import { EmptyState } from "../components/EmptyState";
 import { AtmosphericPanel } from "../components/AtmosphericPanel";
-import { AtmosphericWave } from "../components/AtmosphericWave";
+import { RibbonBackground } from "../components/RibbonBackground";
 import { StatusBadge } from "../components/StatusBadge";
 import type { WorkspacePage } from "../components/AppShell";
 
@@ -116,7 +116,7 @@ export function DashboardPage({ onNavigate }: { onNavigate: (page: WorkspacePage
     <div className="dashboard preview-dashboard">
       <div className="dashboard-hero">
         <AtmosphericPanel tone="mint">
-        <AtmosphericWave className="dashboard-hero-waves" />
+        <RibbonBackground className="dashboard-hero-ribbon" />
         <p className="eyebrow">工作台</p>
         <h1>让每一种声音，都能被清晰表达。</h1>
         <p>用一段授权的 3–10 秒参考音频创建音色，随时开始语音创作。</p>

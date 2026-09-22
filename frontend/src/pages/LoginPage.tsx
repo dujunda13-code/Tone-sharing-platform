@@ -3,10 +3,10 @@ import { useState } from "react";
 import { api, getApiError } from "../api/client";
 import type { AuthUser } from "../api/types";
 import { AtmosphericPanel } from "../components/AtmosphericPanel";
-import { AtmosphericWave } from "../components/AtmosphericWave";
 import { BrandGlyph } from "../components/BrandGlyph";
 import { ErrorPanel } from "../components/ErrorPanel";
 import { PasswordField } from "../components/PasswordField";
+import { RibbonBackground } from "../components/RibbonBackground";
 
 export function LoginPage({
   onLogin,
@@ -38,7 +38,7 @@ export function LoginPage({
   return (
     <main className="auth-layout auth-preview auth-preview-login">
       <AtmosphericPanel tone="mint" className="auth-art-panel">
-        <AtmosphericWave className="auth-preview-waves" />
+        <RibbonBackground className="auth-preview-ribbon" />
         <span className="auth-brand-mark">
           <BrandGlyph />
           <span>音色共享平台</span>

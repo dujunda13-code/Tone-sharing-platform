@@ -35,9 +35,9 @@ describe("DashboardPage 编辑式看板", () => {
     expect(
       await screen.findByText(/让每一种声音，都能被清晰表达/),
     ).toBeInTheDocument();
-    const heroWaves = document.querySelector(".dashboard-hero-waves");
-    expect(heroWaves).toBeInTheDocument();
-    expect(heroWaves?.querySelectorAll("path")).toHaveLength(3);
+    const heroRibbon = document.querySelector("video.dashboard-hero-ribbon");
+    expect(heroRibbon).toBeInTheDocument();
+    expect(heroRibbon?.querySelector('source[type="video/mp4"]')).toHaveAttribute("src", "/dashboard-ribbon-motion.mp4");
     const stats = screen.getByRole("region", { name: "资源概览" });
     expect(within(stats).getByText("参考音频")).toBeInTheDocument();
     expect(within(stats).getByText("我的音色")).toBeInTheDocument();

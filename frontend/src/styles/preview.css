@@ -534,24 +534,27 @@ body {
   background: radial-gradient(ellipse at 25% 88%, var(--gradient-peach), transparent 22%);
 }
 
-.dashboard-hero-waves,
-.plaza-hero-waves {
+.ribbon-background {
   position: absolute !important;
   z-index: 1 !important;
-  top: 3%;
-  right: -3%;
-  width: 54%;
-  height: 88%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
   pointer-events: none;
 }
 
-.plaza-hero-waves {
-  top: 6%;
-  height: 88%;
+.auth-preview-ribbon {
+  object-position: 76% center;
 }
 
-.dashboard-hero .atmospheric-panel > :not(.dashboard-hero-waves) {
+.dashboard-hero .atmospheric-panel > :not(.dashboard-hero-ribbon) {
   z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-background { display: none; }
 }
 
 .dashboard-hero h1 {
