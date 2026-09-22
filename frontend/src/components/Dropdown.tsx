@@ -27,6 +27,10 @@ export function Dropdown({ label, value, options, onChange, disabled = false, cl
     return () => document.removeEventListener("pointerdown", closeOutside);
   }, [open]);
 
+  useEffect(() => {
+    if (open) document.getElementById(`${listId}-${active}`)?.scrollIntoView?.({ block: "nearest" });
+  }, [open, active, listId]);
+
   const show = () => {
     setActive(Math.max(0, enabled.findIndex((option) => option.value === value)));
     setOpen(true);

@@ -66,6 +66,13 @@ describe("SynthesisStudioPage 合成门禁", () => {
     expect(screen.getByLabelText("文本切分方式")).toBeInTheDocument();
     expect(screen.getByLabelText("top_k")).toBeInTheDocument();
     expect(screen.queryByLabelText("情绪控制方式")).not.toBeInTheDocument();
+    await choose(user, "文本切分方式", "按标点符号切");
+    await choose(user, "top_k", "24");
+    await choose(user, "top_p", "0.75");
+    await choose(user, "temperature", "0.55");
+    expect(synthesisDraftStore.get().localOptions).toMatchObject({
+      cut_method: "punctuation", top_k: 24, top_p: 0.75, temperature: 0.55,
+    });
 
     await user.click(screen.getByRole("button", { name: "情绪合成" }));
 
@@ -80,6 +87,16 @@ describe("SynthesisStudioPage 合成门禁", () => {
     expect(screen.getByLabelText("允许将参考音频发送至云端进行情绪合成")).toBeInTheDocument();
     expect(screen.queryByText(/发音规则/)).not.toBeInTheDocument();
     expect(screen.queryByLabelText("top_k")).not.toBeInTheDocument();
+    await choose(user, "目标情绪", "平静");
+    await choose(user, "输出采样率", "48 kHz");
+    await choose(user, "情绪控制方式", "八维情绪向量");
+    await choose(user, "向量模式", "混合情绪");
+    expect(synthesisDraftStore.get()).toMatchObject({
+      cloudEmotionLabel: "calm",
+      cloudSampleRate: 48000,
+      cloudControlMode: "vector",
+      cloudVectorMode: "mixed",
+    });
   });
 
   it("queues the job and only offers audio when the backend marks it verified", async () => {

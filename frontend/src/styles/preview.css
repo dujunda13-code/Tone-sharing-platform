@@ -1264,7 +1264,6 @@ body {
 .synthesis-mode-switch button.active { background: #282522; color: #fff; box-shadow: 0 5px 14px rgba(40, 37, 34, 0.14); }
 .mode-explanation { min-height: 34px; margin: 8px 2px 15px; }
 .settings-grid { padding: 14px; border: 1px solid var(--hairline-soft); border-radius: 14px; background: #fcfbfa; }
-.settings-grid input[type="number"] { width: 100%; }
 .emotion-vector-editor { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--hairline-soft); border-radius: 12px; }
 .vector-control { display: grid; grid-template-columns: 82px 1fr; align-items: center; gap: 8px; font-size: 12px; }
 .vector-control input { min-width: 0; }

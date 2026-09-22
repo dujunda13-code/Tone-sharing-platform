@@ -37,6 +37,13 @@ const CLOUD_EMOTION_LABELS: Array<{ value: CloudEmotionLabel; label: string }> =
   { value: "calm", label: "平静" },
 ];
 const VECTOR_LABELS = ["开心", "愤怒", "悲伤", "恐惧", "厌恶", "忧郁", "惊讶", "平静"];
+const TOP_K_OPTIONS = Array.from({ length: 100 }, (_, index) => ({
+  value: String(index + 1), label: String(index + 1),
+}));
+const PROBABILITY_OPTIONS = Array.from({ length: 21 }, (_, index) => {
+  const value = String(Number((index * 0.05).toFixed(2)));
+  return { value, label: value };
+});
 
 /** 语音创作工作台：从可用音色选择、输入文本并安全合成；只有后端确认的已验证输出才提供播放/下载。 */
 export function SynthesisStudioPage({
@@ -313,25 +320,45 @@ export function SynthesisStudioPage({
           {synthesisMode === "local" ? (
             <>
               <div className="field settings-grid">
-                <label htmlFor="local-cut-method">文本切分方式</label>
-                <select id="local-cut-method" value={localOptions.cut_method} onChange={(event) => setDraft({ localOptions: { ...localOptions, cut_method: event.target.value as typeof localOptions.cut_method } })}>
-                  <option value="none">不切分</option>
-                  <option value="four_sentences">凑四句一切</option>
-                  <option value="fifty_chars">凑 50 字一切</option>
-                  <option value="zh_period">按中文句号切</option>
-                  <option value="en_period">按英文句号切</option>
-                  <option value="punctuation">按标点符号切</option>
-                </select>
+                <label>文本切分方式</label>
+                <Dropdown
+                  label="文本切分方式"
+                  value={localOptions.cut_method}
+                  onChange={(value) => setDraft({ localOptions: { ...localOptions, cut_method: value as typeof localOptions.cut_method } })}
+                  options={[
+                    { value: "none", label: "不切分" },
+                    { value: "four_sentences", label: "凑四句一切" },
+                    { value: "fifty_chars", label: "凑 50 字一切" },
+                    { value: "zh_period", label: "按中文句号切" },
+                    { value: "en_period", label: "按英文句号切" },
+                    { value: "punctuation", label: "按标点符号切" },
+                  ]}
+                />
                 <label htmlFor="local-speed">语速：{localOptions.speed.toFixed(2)}</label>
                 <input id="local-speed" type="range" min={0.6} max={1.65} step={0.05} value={localOptions.speed} onChange={(event) => setDraft({ localOptions: { ...localOptions, speed: Number(event.target.value) } })} />
                 <label htmlFor="local-pause">句间停顿：{localOptions.pause_seconds.toFixed(2)} 秒</label>
                 <input id="local-pause" type="range" min={0.1} max={0.5} step={0.01} value={localOptions.pause_seconds} onChange={(event) => setDraft({ localOptions: { ...localOptions, pause_seconds: Number(event.target.value) } })} />
-                <label htmlFor="local-top-k">top_k</label>
-                <input id="local-top-k" type="number" min={1} max={100} value={localOptions.top_k} onChange={(event) => setDraft({ localOptions: { ...localOptions, top_k: Number(event.target.value) } })} />
-                <label htmlFor="local-top-p">top_p</label>
-                <input id="local-top-p" type="number" min={0} max={1} step={0.05} value={localOptions.top_p} onChange={(event) => setDraft({ localOptions: { ...localOptions, top_p: Number(event.target.value) } })} />
-                <label htmlFor="local-temperature">temperature</label>
-                <input id="local-temperature" type="number" min={0} max={1} step={0.05} value={localOptions.temperature} onChange={(event) => setDraft({ localOptions: { ...localOptions, temperature: Number(event.target.value) } })} />
+                <label>top_k</label>
+                <Dropdown
+                  label="top_k"
+                  value={String(localOptions.top_k)}
+                  onChange={(value) => setDraft({ localOptions: { ...localOptions, top_k: Number(value) } })}
+                  options={TOP_K_OPTIONS}
+                />
+                <label>top_p</label>
+                <Dropdown
+                  label="top_p"
+                  value={String(localOptions.top_p)}
+                  onChange={(value) => setDraft({ localOptions: { ...localOptions, top_p: Number(value) } })}
+                  options={PROBABILITY_OPTIONS}
+                />
+                <label>temperature</label>
+                <Dropdown
+                  label="temperature"
+                  value={String(localOptions.temperature)}
+                  onChange={(value) => setDraft({ localOptions: { ...localOptions, temperature: Number(value) } })}
+                  options={PROBABILITY_OPTIONS}
+                />
               </div>
               <div className="field">
                 <label>情感控制</label>
@@ -360,19 +387,27 @@ export function SynthesisStudioPage({
           ) : (
             <>
               <div className="field">
-                <label htmlFor="cloud-control-mode">情绪控制方式</label>
-                <select id="cloud-control-mode" value={cloudControlMode} onChange={(event) => setDraft({ cloudControlMode: event.target.value as typeof cloudControlMode })}>
-                  <option value="auto">使用正文作为情绪提示</option>
-                  <option value="label">情绪标签</option>
-                  <option value="description">自然语言描述</option>
-                  <option value="vector">八维情绪向量</option>
-                </select>
+                <label>情绪控制方式</label>
+                <Dropdown
+                  label="情绪控制方式"
+                  value={cloudControlMode}
+                  onChange={(value) => setDraft({ cloudControlMode: value as typeof cloudControlMode })}
+                  options={[
+                    { value: "auto", label: "使用正文作为情绪提示" },
+                    { value: "label", label: "情绪标签" },
+                    { value: "description", label: "自然语言描述" },
+                    { value: "vector", label: "八维情绪向量" },
+                  ]}
+                />
                 {cloudControlMode === "label" && (
                   <>
-                    <label htmlFor="cloud-emotion-label">目标情绪</label>
-                    <select id="cloud-emotion-label" value={cloudEmotionLabel} onChange={(event) => setDraft({ cloudEmotionLabel: event.target.value as CloudEmotionLabel })}>
-                      {CLOUD_EMOTION_LABELS.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
-                    </select>
+                    <label>目标情绪</label>
+                    <Dropdown
+                      label="目标情绪"
+                      value={cloudEmotionLabel}
+                      onChange={(value) => setDraft({ cloudEmotionLabel: value as CloudEmotionLabel })}
+                      options={CLOUD_EMOTION_LABELS}
+                    />
                   </>
                 )}
                 {cloudControlMode === "description" && (
@@ -384,11 +419,13 @@ export function SynthesisStudioPage({
                 )}
                 {cloudControlMode === "vector" && (
                   <div className="emotion-vector-editor">
-                    <label htmlFor="cloud-vector-mode">向量模式</label>
-                    <select id="cloud-vector-mode" value={cloudVectorMode} onChange={(event) => setDraft({ cloudVectorMode: event.target.value as typeof cloudVectorMode })}>
-                      <option value="single">单一情绪</option>
-                      <option value="mixed">混合情绪</option>
-                    </select>
+                    <label>向量模式</label>
+                    <Dropdown
+                      label="向量模式"
+                      value={cloudVectorMode}
+                      onChange={(value) => setDraft({ cloudVectorMode: value as typeof cloudVectorMode })}
+                      options={[{ value: "single", label: "单一情绪" }, { value: "mixed", label: "混合情绪" }]}
+                    />
                     {VECTOR_LABELS.map((label, index) => (
                       <label key={label} className="vector-control">{label}：{cloudVector[index].toFixed(2)}
                         <input type="range" min={0} max={1.5} step={0.05} value={cloudVector[index]} onChange={(event) => setDraft({ cloudVector: cloudVector.map((value, vectorIndex) => vectorIndex === index ? Number(event.target.value) : value) })} />
@@ -399,12 +436,17 @@ export function SynthesisStudioPage({
                 )}
                 <label htmlFor="synthesis-strength">情绪强度：{strength.toFixed(2)}</label>
                 <input id="synthesis-strength" type="range" min={0} max={1} step={0.05} value={strength} onChange={(event) => setDraft({ strength: Number(event.target.value) })} />
-                <label htmlFor="cloud-sample-rate">输出采样率</label>
-                <select id="cloud-sample-rate" value={cloudSampleRate} onChange={(event) => setDraft({ cloudSampleRate: Number(event.target.value) as typeof cloudSampleRate })}>
-                  <option value={22050}>22.05 kHz</option>
-                  <option value={44100}>44.1 kHz</option>
-                  <option value={48000}>48 kHz</option>
-                </select>
+                <label>输出采样率</label>
+                <Dropdown
+                  label="输出采样率"
+                  value={String(cloudSampleRate)}
+                  onChange={(value) => setDraft({ cloudSampleRate: Number(value) as typeof cloudSampleRate })}
+                  options={[
+                    { value: "22050", label: "22.05 kHz" },
+                    { value: "44100", label: "44.1 kHz" },
+                    { value: "48000", label: "48 kHz" },
+                  ]}
+                />
                 <label htmlFor="cloud-speed">语速：{cloudSpeed.toFixed(2)}</label>
                 <input id="cloud-speed" type="range" min={0.25} max={4} step={0.05} value={cloudSpeed} onChange={(event) => setDraft({ cloudSpeed: Number(event.target.value) })} />
                 <label htmlFor="cloud-gain">音量增益：{cloudGain.toFixed(2)}</label>
